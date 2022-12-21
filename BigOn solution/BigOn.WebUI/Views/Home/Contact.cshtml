@@ -94,7 +94,7 @@
                      </div>
                      <div class="col-md-5">
                          <div class="newsletter-box">
-                             <form action="#">
+                             <form id="newsletter-subscribe" method="post" >
                                   <input class="subscribe" placeholder="Enter your email address" name="email" id="subscribe" type="text">
                                   <button type="submit" class="submit">subscribe</button>
                              </form>
@@ -143,7 +143,7 @@
         $('#contact-form').submit(function(ev){
         
         ev.preventDefault();
-        console.log(ev.currentTarget);
+        
 
         let fd= new FormData(ev.currentTarget);
 

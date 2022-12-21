@@ -26,8 +26,22 @@ using BigOn.Domain.AppCode.Extensions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\Yeni klasör\BigOn solution\BigOn.WebUI\Views\_ViewImports.cshtml"
+using BigOn.Domain.Models.FormModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "D:\Yeni klasör\BigOn solution\BigOn.WebUI\Views\_ViewImports.cshtml"
+using BigOn.Domain.AppCode.Infrastructure;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fd62ab3bb1e1a336983d70cb81deb8e9109923de", @"/Views/Home/Faq.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8188a39c3bbd2c9d0ba5a5d69fb4140991e10218", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"873358ee1d26b7bfce743c8ee8a72560d16a595d", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Faq : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Faq>>
     {
         #pragma warning disable 1998

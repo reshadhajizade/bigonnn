@@ -1,8 +1,11 @@
-﻿using BigOn.Domain.Models.DataContexts;
+﻿using BigOn.Domain.Application.BrandModule;
+using BigOn.Domain.Models.DataContexts;
 using BigOn.Domain.Models.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BigOn.WebApi.Controllers
 {
@@ -10,53 +13,55 @@ namespace BigOn.WebApi.Controllers
     [ApiController]
     public class BrandsController : ControllerBase
     {
-        private readonly BigOnDbContext db;
+        private readonly IMediator mediator;
 
-        public BrandsController(BigOnDbContext db)
+        public BrandsController(IMediator mediator)
         {
-            this.db = db;
+            this.mediator = mediator;
         }
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get([FromRoute]BrandGetAllQuery query)
         {
-            var data = db.Brands.Where(m => m.DeletedTime == null).ToList();
-            return Ok(data);
+          var response =await mediator.Send(query);
+            return Ok(response);
         }
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get([FromRoute]BrandSingleQuery query)
         {
-            var data = db.Brands.FirstOrDefault(m =>m.Id==id && m.DeletedTime == null);
-            return Ok(data);
+            var response = await mediator.Send(query);
+            if (response == null)
+            {
+                return NotFound();
+            }
+            return Ok(response);
         }
         [HttpPost]
-        public IActionResult Create(Brand model)
+        public async Task<IActionResult> Create(BrandCreateCommand command)
         {
-            db.Brands.Add(model);
-            db.SaveChanges();
-            return Ok(model);
+            var response = await mediator.Send(command);
+            return Ok(response);
         }
-        [HttpPut]
-        public IActionResult Edit(int id,Brand model)
-        {   var entity= db.Brands.FirstOrDefault(m => m.Id == id);
-            if (entity==null)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Edit(int id,[FromBody]BrandEditCommand command)
+        {
+            command.id = id;
+            var response = await mediator.Send(command);
+            if (response == null)
             {
                 return NotFound();
             }
-            entity.Name = model.Name;
-            db.SaveChanges();
-            return Ok(model);
+            
+           
+            return Ok(response);
         }
-        [HttpDelete]
-        public IActionResult Remove(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Remove([FromRoute]BrandRemoveCommand command)
         {
-            var entity = db.Brands.FirstOrDefault(m => m.Id == id);
-            if (entity == null)
+            var response = await mediator.Send(command);
+            if (response == null)
             {
                 return NotFound();
             }
-            db.Brands.Remove(entity);
-            db.SaveChanges();
-
             return NoContent();
         }
     }

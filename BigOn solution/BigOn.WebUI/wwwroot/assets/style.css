@@ -4855,6 +4855,12 @@ legend {
 	font-size: 13px;
 	margin-bottom: 5px;
 }
+.blog-short-content{
+  height: 130px;
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .control-wraapper {
     margin-bottom: 3px;
 }

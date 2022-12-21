@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BigOn.Domain.Models.DataContexts;
 using BigOn.Domain.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BigOn.Domain.Areas.Admin.Controllers
 {
@@ -20,7 +21,7 @@ namespace BigOn.Domain.Areas.Admin.Controllers
             this.db = db;
         }
 
-        // GET: Admin/Brands
+        [Authorize(Policy="admin.brands.index")]
         public async Task<IActionResult> Index()
         {
 
@@ -30,7 +31,7 @@ namespace BigOn.Domain.Areas.Admin.Controllers
             return View(data);
         }
 
-        // GET: Admin/Brands/Details/5
+        [Authorize(Policy = "admin.brands.details")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,18 +49,16 @@ namespace BigOn.Domain.Areas.Admin.Controllers
             return View(brand);
         }
 
-        // GET: Admin/Brands/Create
+        [Authorize(Policy = "admin.brands.create")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Brands/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Policy = "admin.brands.create")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name.Id")] Brand brand)
+        public async Task<IActionResult> Create([Bind("Name,Id")] Brand brand)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +69,7 @@ namespace BigOn.Domain.Areas.Admin.Controllers
             return View(brand);
         }
 
-        // GET: Admin/Brands/Edit/5
+        [Authorize(Policy = "admin.brands.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,9 +85,7 @@ namespace BigOn.Domain.Areas.Admin.Controllers
             return View(brand);
         }
 
-        // POST: Admin/Brands/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Policy = "admin.brands.edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Name,Id,CreatedTime,DeletedTime")] Brand brand)
@@ -139,9 +136,9 @@ namespace BigOn.Domain.Areas.Admin.Controllers
             return View(brand);
         }
 
-        // POST: Admin/Brands/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.brands.remove")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var brand = await db.Brands.FindAsync(id);
@@ -150,6 +147,7 @@ namespace BigOn.Domain.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [NonAction]
         private bool BrandExists(int id)
         {
             return db.Brands.Any(e => e.Id == id);

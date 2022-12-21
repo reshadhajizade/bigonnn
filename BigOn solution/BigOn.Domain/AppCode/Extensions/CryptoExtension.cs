@@ -3,12 +3,13 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 
 namespace BigOn.Domain.AppCode.Extensions
 {
     public  static partial class Extension
     {
-        const string saltkey = "code academy";
+        const string saltkey = "p513!codeAacademy";
         public static string ToMd5(this string value)
         {
             byte[] buffer = Encoding.UTF8.GetBytes($"{saltkey}{value}resad");
@@ -36,7 +37,7 @@ namespace BigOn.Domain.AppCode.Extensions
 
             return string.Join("", mixedBuffer.Select(b => b.ToString("x2")));
         }
-        public static string Encrypt(this string value, string key)
+        public static string Encrypt(this string value, string key,bool appliedUrlEncode=false)
         {
 
             try
@@ -61,6 +62,10 @@ namespace BigOn.Domain.AppCode.Extensions
                         var result = new byte[ms.Length];
 
                         ms.Read(result, 0, result.Length);
+                        if (appliedUrlEncode=true)
+                        {
+                            return HttpUtility.UrlEncode(Convert.ToBase64String(result));
+                        }
 
                         return Convert.ToBase64String(result);
                     }

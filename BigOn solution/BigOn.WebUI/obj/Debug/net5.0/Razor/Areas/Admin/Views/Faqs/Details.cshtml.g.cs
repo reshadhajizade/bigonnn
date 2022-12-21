@@ -26,8 +26,29 @@ using BigOn.Domain.AppCode.Extensions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\Yeni klasör\BigOn solution\BigOn.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using BigOn.Domain.Business.BlogPostModule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "D:\Yeni klasör\BigOn solution\BigOn.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using BigOn.Domain.Application.ProductModule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "D:\Yeni klasör\BigOn solution\BigOn.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using BigOn.Domain.AppCode.Infrastructure;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0e7f5528a3116af1858dd26815a2c1ff476fe76e", @"/Areas/Admin/Views/Faqs/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8188a39c3bbd2c9d0ba5a5d69fb4140991e10218", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a12887bc7db621b6ae2165d446752817f3023ed6", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Faqs_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Faq>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -88,7 +109,7 @@ using BigOn.Domain.AppCode.Extensions;
                                                 <div class=""page-header-breadcrumb"">
            ");
             WriteLiteral("                                         <ul class=\"breadcrumb-title\">\r\n                                                        <li class=\"breadcrumb-item\" style=\"float: left;\">\r\n                                                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e7121", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e7737", async() => {
                 WriteLiteral("\r\n                                                                <i class=\"feather icon-home\"></i> ");
             }
             );
@@ -106,7 +127,7 @@ using BigOn.Domain.AppCode.Extensions;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                                        </li>\r\n                                                        <li class=\"breadcrumb-item\" style=\"float: left;\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e8754", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e9370", async() => {
                 WriteLiteral("Faqs");
             }
             );
@@ -157,7 +178,7 @@ using BigOn.Domain.AppCode.Extensions;
             
             <div class=""form-group row"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e11957", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e12573", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.LabelTagHelper>();
@@ -187,7 +208,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper.For = ModelExpressionProvid
 #line hidden
 #nullable disable
             WriteLiteral("\r\n               </p>\r\n                </div>\r\n              \r\n            </div>\r\n             <div class=\"form-group row\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e13973", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e14589", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.LabelTagHelper>();
@@ -217,7 +238,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper.For = ModelExpressionProvid
 #line hidden
 #nullable disable
             WriteLiteral("\r\n               </div>\r\n                </div>\r\n              \r\n            </div>\r\n            \r\n            <div class=\"form-group row\">\r\n                \r\n              <div class=\"col-12 d-flex justify-content-end\">\r\n                  ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e16147", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e16763", async() => {
                 WriteLiteral("Edit");
             }
             );
@@ -249,7 +270,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper.For = ModelExpressionProvid
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                  ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e18428", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7f5528a3116af1858dd26815a2c1ff476fe76e19044", async() => {
                 WriteLiteral("Geri");
             }
             );

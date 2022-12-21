@@ -5,6 +5,8 @@ namespace BigOn.Domain.AppCode.Extensions
 {
     public static partial class Extension
     {
+        public static string[] policies;
+
         public static List<ValidationError> GetErrors( this ModelStateDictionary modelState)
         {
 

@@ -1,37 +1,51 @@
 ﻿using BigOn.Domain.AppCode.Extensions;
+using BigOn.Domain.AppCode.Services;
 using BigOn.Domain.Models.DataContexts;
 using BigOn.Domain.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace BigOn.Domain.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
+       
         public BigOnDbContext Db { get; }
-        private readonly IConfiguration configuration;
-        public HomeController(BigOnDbContext db,IConfiguration configuration)
+        
+        private readonly CryptoService crypto;
+        private readonly EmailService emailService;
+
+        public HomeController(BigOnDbContext db,CryptoService crypto,EmailService emailService)
         {
-            Db = db;
+           Db = db;
+            this.crypto = crypto;
+            this.emailService = emailService;
         }
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
+        [AllowAnonymous]
         public IActionResult About()
         {
             return View();
         }
+        [AllowAnonymous]
         public IActionResult Contact()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Contact(ContactPost model)
         {
             if (ModelState.IsValid)
@@ -66,8 +80,11 @@ namespace BigOn.Domain.Controllers
         }
        
         [HttpPost]
-        public IActionResult Subscribe(Subscribe model)
+        [AllowAnonymous]
+       
+        public async Task<IActionResult>  Subscribe(Subscribe model)
         {
+            
             if (!ModelState.IsValid)
             {
                 string msg = ModelState.Values.First().Errors[0].ErrorMessage;
@@ -97,10 +114,13 @@ namespace BigOn.Domain.Controllers
                 entity.Id=model.Id;
 
             }
-            string token = $"{model.Id}--{model.Email}--{Guid.NewGuid()}".Encrypt(Program.key);
-              token=   HttpUtility.UrlEncode(token);
-            string message = $"Abuneliyinizi <a href='https://localhost:44323/approve-subscribe?'>link<a/> vasitesile tesdiq edin";
-            configuration.SendMail("rashadah@code.edu.az",message,"readsds");
+            string token = $"{model.Id}--{model.Email}--{Guid.NewGuid()}";
+            token = crypto.Encrypt(token,true);
+            // token =   HttpUtility.UrlEncode(token);
+          
+            string message = $"Abuneliyinizi <a href='https://{Request.Host}/approve-subscribe?'>link<a/> vasitesile tesdiq edin";
+            // configuration.SendMail("rashadah@code.edu.az",message,"readsds");
+            await emailService.SendEmailAsync(model.Email, "Bashliq", message);
             return Json(new
             {
                 error = false,
@@ -109,10 +129,12 @@ namespace BigOn.Domain.Controllers
         }
 
         [Route("/approve-subscribe")]
+        [AllowAnonymous]
         public string SubscribeApprove(string token)
         {
-            token= token.Decrypt(Program.key);
-           Match match = Regex.Match(token, @"^(?<id>\d+)-(?<email>[^-]+)-(?<randomkey>.*)$");
+            //token= token.Decrypt(Program.key);
+            token = crypto.Decrypt(token);
+            Match match = Regex.Match(token, @"^(?<id>\d+)-(?<email>[^-]+)-(?<randomkey>.*)$");
             if (!match.Success)
             {
                 return "Token uygun deyil";

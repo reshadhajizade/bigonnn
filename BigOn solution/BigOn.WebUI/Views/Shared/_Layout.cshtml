@@ -685,6 +685,39 @@
     <script src="~/assets/js/plugins.js"></script>
     <!-- main js -->
     <script src="~/assets/js/main.js"></script>
+
+    
+            <script>  
+             $(document).ready(function(){
+
+                    $('#newsletter-subscribe').submit(function(e){
+
+                        e.preventDefault();
+                        let formData = new FormData(e.currentTarget);
+                        $.ajax({
+
+                            url:'@Url.Action("Subscribe","Home")',
+                            type:'POST',
+                            data:formData,
+                            processData:false,
+                            contentType:false,
+                            success: function (response){
+                                console.log(response);
+                            },
+                             error: function (responseError){
+                                 console.error(responseError);
+                            }
+
+                        });
+
+
+
+                       
+
+                    });
+
+                });
+            </script>
 </body>
 
 

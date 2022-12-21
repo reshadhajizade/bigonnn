@@ -1,8 +1,8 @@
-D:\Yeni klasör\BigOn solution\BigOn.Domain\obj\Debug\net5.0\BigOn.Domain.csproj.AssemblyReference.cache
 D:\Yeni klasör\BigOn solution\BigOn.Domain\obj\Debug\net5.0\BigOn.Domain.GeneratedMSBuildEditorConfig.editorconfig
 D:\Yeni klasör\BigOn solution\BigOn.Domain\obj\Debug\net5.0\BigOn.Domain.AssemblyInfoInputs.cache
 D:\Yeni klasör\BigOn solution\BigOn.Domain\obj\Debug\net5.0\BigOn.Domain.AssemblyInfo.cs
 D:\Yeni klasör\BigOn solution\BigOn.Domain\obj\Debug\net5.0\BigOn.Domain.csproj.CoreCompileInputs.cache
+D:\Yeni klasör\BigOn solution\BigOn.Domain\obj\Debug\net5.0\BigOn.Domain.csproj.AssemblyReference.cache
 D:\Yeni klasör\BigOn solution\BigOn.Domain\bin\Debug\net5.0\BigOn.Domain.deps.json
 D:\Yeni klasör\BigOn solution\BigOn.Domain\bin\Debug\net5.0\BigOn.Domain.runtimeconfig.json
 D:\Yeni klasör\BigOn solution\BigOn.Domain\bin\Debug\net5.0\BigOn.Domain.runtimeconfig.dev.json

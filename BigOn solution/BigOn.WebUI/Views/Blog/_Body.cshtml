@@ -1,0 +1,36 @@
+﻿@model PagedViewModel<BlogPost>
+
+<div class="row">
+            @foreach (var item in Model.Items)
+            {
+                <div class="col-md-4 col-sm-6">
+                    <!-- Single Blog Start -->
+                    <div class="single-blog">
+                        <div class="blog-img">
+                            <a asp-action="Details" asp-route-slug="@item.Slug">
+                                <img src="~/uploads/images/@item.ImagePath" alt="blog-image">
+                            </a>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-content-upper">
+                                <h6 class="blog-title">
+                                    <a asp-action="Details" asp-route-slug="@item.Slug">@item.Title</a>
+                                </h6>
+                                <p class="blog-short-content">@item.Body.ToPlainText()</p>
+                            </div>
+                            <div class="blog-content-lower">
+                                <a href="https://themeforest.net/user/hastech">Hastech</a>
+                                <span class="f-right">@item.PublishedDate?.ToString("dd MMM, yyyy")</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Blog End -->
+                </div>
+            }
+        </div>
+        <!-- Row End -->
+        <div class="row">
+            <div class="col-12">
+                @Model.GetPager(Url,"Index",paginateFunction:"goPage")
+            </div>
+        </div>

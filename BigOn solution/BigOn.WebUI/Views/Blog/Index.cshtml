@@ -1,0 +1,59 @@
+﻿@model PagedViewModel<BlogPost>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-area ptb-50">
+    <div class="container">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Container End -->
+</div>
+<!-- Breadcrumb End -->
+<!-- Blog Area Start -->
+<div class="blog-area off-white-bg pb-50">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-12">
+                <div class="section-title text-center ptb-50">
+                    <h3 class="section-info">ALL LATEST BLOGS</h3>
+                </div>
+            </div>
+            <!-- Section Title End -->
+        </div>
+        <!-- Row End -->
+        <div id="dynamic-content">
+            <partial name="_Body" model="@Model" />
+        </div>
+    </div>
+</div>
+<partial name="_Newsletter" />
+
+
+@section addjs{
+    <script>
+        function goPage(pageIndex, pageSize) {
+
+            $.ajax({
+                url:`@Url.Action("Index")?pageIndex=${pageIndex}&pageSize=${pageSize}`,
+                method:'GET',
+                success: function(response) {
+                    $('#dynamic-content').html(response);
+                    location.hash = "#dynamic-content";
+                    location.hash = "";
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+        }
+    </script>
+}
